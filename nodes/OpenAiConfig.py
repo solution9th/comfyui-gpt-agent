@@ -5,7 +5,7 @@ class OpenAiConfig:
     def INPUT_TYPES(cls):
         inputs = {
             "required": {
-                "model": ("STRING", {"default":"gpt-3.5-turbo"}),
+                "model": ("STRING", {"default":""}),
                 "api_key": ("STRING", {"default": ""}),
                 "api_type":  (["openai","caihulu","ollama"], {}),
                 "api_base": ("STRING", {"default": ""}),

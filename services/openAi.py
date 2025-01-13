@@ -1,9 +1,21 @@
 from openai import OpenAI ,AzureOpenAI,DefaultHttpxClient
 import httpx
+import os
 
 
 class OpenAIAgent:
-    def __init__(self, api_key="", model="gpt-3.5-turbo", api_type="", api_base=None,api_version="",api_proxy = ""):
+    def __init__(self, api_key="", model="", api_type="", api_base="",api_version="",api_proxy = ""):
+        if api_key == "":
+            api_key = os.getenv('api_key')
+        if model == "":
+            model = os.getenv('api_model')
+        if api_base == "":
+            api_base = os.getenv('api_base')
+        if api_version == "":
+            api_version = os.getenv('api_version')
+        if api_proxy == "":
+            api_proxy = os.getenv('api_proxy')
+      
         if api_type == "azure":
             self.client = AzureOpenAI(
                 api_version=api_version,
