@@ -1,3 +1,4 @@
+import logging
 from openai import OpenAI ,AzureOpenAI,DefaultHttpxClient
 import httpx
 import os
@@ -50,4 +51,5 @@ class OpenAIAgent:
                 {"role": "user", "content": user_message}
             ]
         )
+        logging.info(f"openai chat result:{completion.choices[0].message.content}")
         return completion.choices[0].message.content
